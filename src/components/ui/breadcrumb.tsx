@@ -4,6 +4,9 @@ import { ChevronRight, MoreHorizontal } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * Breadcrumb navigation root component.
+ */
 const Breadcrumb = React.forwardRef<
   HTMLElement,
   React.ComponentPropsWithoutRef<"nav"> & {
@@ -12,6 +15,9 @@ const Breadcrumb = React.forwardRef<
 >(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />)
 Breadcrumb.displayName = "Breadcrumb"
 
+/**
+ * List container for breadcrumb items.
+ */
 const BreadcrumbList = React.forwardRef<
   HTMLOListElement,
   React.ComponentPropsWithoutRef<"ol">
@@ -27,6 +33,9 @@ const BreadcrumbList = React.forwardRef<
 ))
 BreadcrumbList.displayName = "BreadcrumbList"
 
+/**
+ * Individual breadcrumb item.
+ */
 const BreadcrumbItem = React.forwardRef<
   HTMLLIElement,
   React.ComponentPropsWithoutRef<"li">
@@ -39,6 +48,9 @@ const BreadcrumbItem = React.forwardRef<
 ))
 BreadcrumbItem.displayName = "BreadcrumbItem"
 
+/**
+ * Link for breadcrumb navigation.
+ */
 const BreadcrumbLink = React.forwardRef<
   HTMLAnchorElement,
   React.ComponentPropsWithoutRef<"a"> & {
@@ -57,6 +69,9 @@ const BreadcrumbLink = React.forwardRef<
 })
 BreadcrumbLink.displayName = "BreadcrumbLink"
 
+/**
+ * Current page indicator in breadcrumb.
+ */
 const BreadcrumbPage = React.forwardRef<
   HTMLSpanElement,
   React.ComponentPropsWithoutRef<"span">
@@ -72,6 +87,9 @@ const BreadcrumbPage = React.forwardRef<
 ))
 BreadcrumbPage.displayName = "BreadcrumbPage"
 
+/**
+ * Separator between breadcrumb items.
+ */
 const BreadcrumbSeparator = ({
   children,
   className,
@@ -88,21 +106,16 @@ const BreadcrumbSeparator = ({
 )
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator"
 
-const BreadcrumbEllipsis = ({
-  className,
-  ...props
-}: React.ComponentProps<"span">) => (
-  <span
-    role="presentation"
-    aria-hidden="true"
-    className={cn("flex h-9 w-9 items-center justify-center", className)}
-    {...props}
-  >
+/**
+ * Ellipsis shown when breadcrumb is truncated.
+ */
+const BreadcrumbEllipsis = ({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) => (
+  <span className={cn("mx-1", className)} {...props}>
     <MoreHorizontal className="h-4 w-4" />
     <span className="sr-only">More</span>
   </span>
 )
-BreadcrumbEllipsis.displayName = "BreadcrumbElipssis"
+BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis"
 
 export {
   Breadcrumb,
